@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+</head>
+<style>
+    @font-face {
+        font-family: 'iconfont';  /* project id 401517 */
+        src: url('https://at.alicdn.com/t/font_401517_yui1w1gfjfvcmcxr.eot');
+        src: url('https://at.alicdn.com/t/font_401517_yui1w1gfjfvcmcxr.eot?#iefix') format('embedded-opentype'),
+        url('https://at.alicdn.com/t/font_401517_yui1w1gfjfvcmcxr.woff') format('woff'),
+        url('https://at.alicdn.com/t/font_401517_yui1w1gfjfvcmcxr.ttf') format('truetype'),
+        url('https://at.alicdn.com/t/font_401517_yui1w1gfjfvcmcxr.svg#iconfont') format('svg');
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    html {
+        font-size: 50px;
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-container {
+        background-color: #fafafa;
+        width: 100%;
+        height: 3rem;
+        /*text-align: center;*/
+        line-height: 3rem;
+    }
+    #add {
+        width: 100%;
+        height: 1rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: red;
+        text-align: center;
+        line-height: 1rem;
+        font-size: .5rem;
+    }
+    .bt {
+        width: 100%;
+        height: 2rem;
+        display: flex;
+        justify-content: space-around;
+    }
+    .do {
+        width: 30%;
+        height: 1rem;
+        font-size: 20px;
+        background-color: red;
+        border-radius: 0.2rem;
+        text-align: center;
+        line-height: 1rem;
+        margin-top: .5rem;
+    }
+    .do.dianji {
+        background-color: #fff;
+        border: 2px solid red;
+    }
+    .done.dianji {
+        background-color: #fff;
+        border: 2px solid blue;
+    }
+    .done{
+        width: 30%;
+        height: 1rem;
+        font-size: 20px;
+        background-color: blue;
+        border-radius: 0.2rem;
+        text-align: center;
+        line-height: 1rem;
+        margin-top: .5rem;
+    }
+    .centent{
+        width: 100%;
+        height: calc(100% - 6rem);
+        position: relative;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+    }
+    .conright {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*display: none;*/
+    }
+    .main {
+        width: 100%;
+        height: 100%;
+        /*filter: blur(2px);*/
+    }
+    .sadow {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    .tanchu {
+        width: 6.5rem;
+        height: 7rem;
+        background-color: #ffffff;
+        position: fixed;
+        top: 3rem;
+        left: .5rem;
+        border-radius: .5rem;
+        display: none;
+        border: 2px solid red;
+    }
+    #tj {
+        width: 80%;
+        height: 1rem;
+        position: absolute;
+        left: .6rem;
+        bottom: .5rem;
+        background-color: #df0100;
+        border-radius: .3rem;
+        border: 2px solid yellow;
+    }
+    #area {
+        width: 100%;
+        height: 80%;
+        border-style: none;
+        border-radius: .3rem;
+
+    }
+    .rq {
+        width: 86%;
+        padding: .1rem .1rem;
+        float: left;
+        margin-top: .1rem;
+        position: relative;
+    }
+    .wc{
+        width: calc(8.2 * 0.3rem);
+        height: 100%;
+        float: left;
+        background-color: #c4002e;
+        position: absolute;
+        top:0;
+        left:113%;
+        font-size:20px;
+        text-align: center;
+        line-height: 1rem;
+    }
+    .sc{
+        width: calc(7.1 * 0.3rem);
+        height: 100%;
+        float: left;
+        background-color: #c4002e;
+        position: absolute;
+        top:0;
+        left:100%;
+        font-size:20px;
+        text-align: center;
+        line-height: 1rem;
+    }
+    .rq li {
+        font-size: .2rem;
+    }
+
+    li:nth-child(1) {
+        width: 50%;
+        display: block;
+        float: left;
+    }
+
+    li:nth-child(2) {
+        /*width: 50%;*/
+        display: block;
+        float: right;
+    }
+
+    li:nth-child(3) {
+        width: 100%;
+        display: block;
+        float: left;
+    }
+
+    li:nth-child(4) {
+        width: 100%;
+        display: block;
+        float: left;
+    }
+
+    #close {
+        position: absolute;
+        top: 0;
+        right: .2rem;
+    }
+
+    #fh, #fh1 {
+        position: absolute;
+        top: .2rem;
+        right: .2rem;
+    }
+    .active{
+        display: block;
+    }
+    #close{
+        width: .6rem;
+        height: .6rem;
+    }
+    .xing{
+        width: 14%;
+        height: 63%;
+        background-size: cover;
+        position: absolute;
+        top: -5px;
+        left:99%;
+    }
+    .rq li{
+        color:#fff;
+        font-weight: 700;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="swiper-container">
+        <img src="img/0.jpg" alt="">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="bt">
+        <div class="do dianji">未完成</div>
+        <div class="done">已完成</div>
+    </div>
+    <div class="centent">
+        <div class="conright">
+            <div class="ul">
+            </div>
+        </div>
+    </div>
+    <div id="add"><p>添加</p></div>
+</div>
+<div class="sadow"></div>
+<div class="tanchu">
+    <textarea name="" id="area" frame="void"></textarea>
+    <input id="tj" type="button" value="提交">
+    <div id="close">
+        <img src="img/X.png" alt="">
+</div>
+</div>
+</body>
+<script src="../jquery.js"></script>
+<script src="js/swiper.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/hammer.js"></script>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        loop: true,
+        // 如果需要分页器
+        pagination: {
+            pagination: '.swiper-pagination',
+            autoplay:3000,
+        },
+    });
+    var myIscroll = new IScroll('.centent', {
+        scrollbars: true,
+        mouseWheel: true,
+        click:true,
+    })
+
+
+
+    $("#add").click(function () {
+        $(".main")
+            .css("filter", "blur(2px)")
+            .next()
+            .css("display", "block")
+            .next()
+            .show(500);
+        $("#area")[0].focus();
+    });
+    $("#close").click(function () {
+        $(".tanchu")
+            .hide(500)
+            .prev()
+            .css("display", "none")
+            .prev()
+            .css("filter", "none")
+    })
+    var num = 0;
+    $("#tj").click(function () {
+        num++;
+        var time = new Date().getTime();
+        var text = $("#area").val();
+        if(text===""){
+            return
+        }
+        $("#area").val("");
+        var data = getData();
+        var color=getColor();
+        data.push({con: text, time, iswait: 0, isdone: 0, number: num, stq:color});
+        saveData(data);
+        reWrite();
+        $(".tanchu")
+            .hide(500)
+            .prev()
+            .css("display", "none")
+            .prev()
+            .css("filter", "none")
+    });
+    var state="wait";
+    function reWrite() {
+        var data = getData();
+        $(".conleft .rq").empty();
+        data.reverse();//反向
+        var str = "";
+        var max=$(window).width()/3;
+        $.each(data, function (index, val) {
+            if(state==="wait"){
+                if (val.isdone === 0) {
+                    var className=val.isStatar?"active":"";  //星星颜色
+                    str += "<div id='" + index + "' class='rq' style='background:" + val.stq + "'> <li class='nian'>" + Tm(val.time) + "</li><li class='tian'>" + Tmd(val.time) + "</li><li class='text'>" + val.con + "</li><li>" + val.number + "</li><div class=xing><img src='img/xing.png' alt=''></div> <div class='wc' style=height:100%;>完成</div></div>"
+                }
+            }else if (state==="done"){
+                if (val.isdone === 1) {
+                    str += "<div id='" + index + "' class='rq' style='background:#ccc;width: 100%;'> <li class='nian'>" + Tm(val.time) + "</li><li class='tian'>" + Tmd(val.time) + "</li><li class='text'>" + val.con + "</li><div class='sc' style=height:100%;>删除</div></div>"
+                }
+        }
+        })
+        $(".ul").html(str);
+        myIscroll.refresh();
+        hdFn();
+    }
+    reWrite();
+
+    $(".bt div").click(function () {
+        $(".bt div")
+            .removeClass("dianji")
+            .filter(this)
+            .addClass("dianji")
+        if($(".do").hasClass("dianji")){
+            state="wait";
+            reWrite()
+        }else{
+            state="done";
+        }
+        reWrite();
+        myIscroll.scrollTo(0,0,0);
+    });
+    //函数
+
+    function getColor() {
+        var arr = [0, 3, 6, 9, "c"]
+        var st = "#";
+        for (var i = 0; i < 3; i++) {
+            var pos = Math.floor(Math.random() * arr.length)
+            st += arr[pos];
+        }
+        return st
+    }
+    function addZero(o) {
+        return o < 10 ? "0" + o : o;
+    }
+    function Tm(ms) {
+        var sj = new Date();
+        sj.setTime(ms)
+        var year = sj.getFullYear();
+        var month = addZero(sj.getMonth() + 1);
+        var day = addZero(sj.getDate());
+        return year + "-" + month + "-" + day;
+    }
+    function Tmd(ms) {
+        var sjd = new Date();
+        sjd.setTime(ms)
+        var hours = sjd.getHours();
+        var minutes = addZero(sjd.getMinutes() + 1);
+        var second = addZero(sjd.getSeconds());
+        return hours + ":" + minutes + ":" + second;
+    }
+    function getData() {
+        return localStorage.table ? JSON.parse(localStorage.table) : [];
+    }
+    function saveData(data) {
+        localStorage.table = JSON.stringify(data);
+    }
+//    滑动
+    var max=$(window).width()/3;
+    function hdFn() {
+        $(".centent .rq").each(function (index, ele) {
+            var mm = new Hammer(ele);
+            var mx;
+            var state ="start";
+            mm.on("panstart",function () {
+                $(ele).css("transition","none");
+            })
+            mm.on("pan",function (e) {
+                mx  =e.deltaX;
+                if(state=="start"){
+                    if(mx>0){
+                        return;
+                    }
+                }
+                if(state=="end"){
+                    if(mx<0){
+                        return;
+                    }
+                    mx=mx-max;
+                }
+                if(Math.abs(mx)>max){
+                    return;
+                }
+                $(ele).css("transform","translate3d("+mx+"px,0,0)")
+            });
+            mm.on("panend",function () {
+                $(ele).css("transition","all 1s");
+                if(Math.abs(mx)>max/2){
+                    $(ele).css("transform","translate3d("+(-max)+"px,0,0)")
+                    state="end";
+                }else {
+                    $(ele).css("transform","translate3d(0,0,0)")
+                    state="start";
+                }
+            })
+        })
+    }
+   $(".conright").on("click",".wc",function () {
+        var data=getData();
+        var index=$(this).parent().attr("id");
+        data.reverse();
+        data[index].isdone=1;
+        data.reverse();
+        saveData(data);
+        reWrite()
+    })
+    $('.conright').on('click','.sc', function (){
+        var data = getData();
+        var index = $(this).parent().attr('id');
+        data.reverse();
+        data.splice(index, 1)//删除某一个
+        data.reverse();
+        saveData(data);
+        reWrite();
+    })
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/wuzi.css">
+</head>
+<body>
+<div class="music">&#xe600;</div>
+<audio src="Anan%20Ryoko%20-%20Refrain.mp3" autoplay></audio>
+<div class="gongneng">
+    <input type="button" value="开始游戏" id="start">
+    <br><span>游戏模式：</span>
+    <br><span>玩家对战</span>
+    <br><span>人机对战</span>
+    <br><input type="button" value="退出游戏" id="end">
+</div>
+<div class="gongneng1">
+    <input type="button" value="开始游戏" id="start">
+    <br><span>游戏模式：</span>
+    <br><span>玩家对战</span><input type="radio" value="" name="mode" checked="checked" class="people">
+    <br><span>人机对战</span><input type="radio" value="" name="mode" class="computer">
+    <br><input type="button" value="重新开始" class="over">
+    <br><input type="button" value="退出游戏" id="end">
+</div>
+<div class="content">
+    <canvas width="600" height="600"></canvas>
+</div>
+<div class="zhezhao">
+    <span>白棋获胜</span>
+    <br><input type="button" value="重新开始" id="agin">
+    <br><input type="button" value="保存棋谱" id="save">
+    <div class="imgbox"></div>
+    <a href="#" id="download">下载</a>
+</div>
+<div class="zhezhao1">
+    <div id="start1"><img src="img/start.png" alt=""></div>
+</div>
+</body>
+<script src="js/wuzi.js"></script>
+</html>

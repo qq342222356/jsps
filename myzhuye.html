@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery.fullPage.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/webstyle.css" type="text/css"/>
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/beijing.css">
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<style>
+    body{
+        background-color: #a8ae98;
+    }
+    .section{
+        text-align: center;
+        font-size: 60px;
+        background-color: #fafafa;
+    }
+    #sec{
+        background-image: url("img/6.jpg");
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    canvas{
+        z-index: 10;!important;
+        display: block;
+        float: left;
+        margin:20px 75px 0 75px;
+        border-radius: 50%;
+    }
+    .banyuan {
+        width: 100px;
+        height: 100px;
+        background-color: #222;
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 50px;
+    }
+    .dingwei{
+        position: relative;
+    }
+    .all{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        left: 0;
+        background-color: rgba(0,0,0,0);
+    }
+    .all h1{
+        float: left;
+        margin-top: 50px;
+        font-size: 60px;
+        color: #af27df;
+    }
+    .all h2{
+        font-size: 40px;
+        color: #af27df;
+        position: absolute;
+        top:-60px;
+        left:0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    @keyframes topI {
+        0%{
+            top:-60px;
+        }
+        100%{
+            top:20px;
+        }
+    }
+    @keyframes topIn {
+        0%{
+           top:-50px;
+        }
+        50%{
+            top:150px;
+        }
+        80%{
+            top:100px;
+        }
+        100%{
+            top:150px;
+        }
+    }
+    .topIn{
+        animation: topIn 1s forwards;
+    }
+    .all h2 .ac{
+        animation: topI 1s;
+    }
+    .touxiang{
+        width:240px;
+        height: 240px;
+        border-radius: 50%;
+        margin: 0 auto;
+        overflow: hidden;
+        transition: 1s;
+    }
+    .shodo{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.31);
+        position: absolute;
+        top: 0;
+        left:0;
+        display: none;
+    }
+    .touxiang:hover .xuanz{
+        transform:rotate(180deg);
+    }
+    .touxiang:hover .shodo{
+        display: block;
+    }
+    .xuanz{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 20px solid #002991;
+        border-left-color: #577286;
+        border-right-color: #e100ff;
+        border-bottom-color: #c4002e;
+        transition: all 2s ease;
+    }
+    .rongqi{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        left:0;
+    }
+    #box{
+        width: 100%;
+        height: 80px;
+        text-align: center;
+        line-height: 50px;
+    }
+    .q{
+        margin-top: 300px;
+    }
+    .e{
+        margin-top: 300px;
+    }
+    #m{
+        transition: 1s all;
+    }
+    .banyuan:hover #m{
+        margin-top: 50px;
+        opacity: 0.2;
+    }
+    .likai{
+        margin-right: 40px;
+    }
+    .last{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        left:0;
+    }
+    footer.container-fluid{
+        height: 636px;
+        padding: 90px 0;
+    }
+    .container.xinxi{
+        width: 1140px;
+        height: 456px;
+        padding: 0 15px;
+        margin: 0 61.5px;
+        float: left;
+    }
+    .xinxi h1{
+        font-size: 23px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .xinxi h2{
+        font-size: 17px;
+        color: #000;
+        line-height: 27px;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        background-color: #fafafa;
+    }
+    .xinxi h3{
+        color:#000;
+    }
+    @keyframes lastLIn {
+        0%{
+            margin-left: -540px;
+        }
+        100%{
+            margin-left: 0;
+        }
+    }
+    .lastLIn{
+      animation: lastLIn 1s forwards;
+    }
+    @keyframes RIn {
+        0%{
+            margin-right: -1200px;
+            display: none;
+        }
+        100%{
+            margin-right: 0;
+            display: block;
+        }
+    }
+    .RIn{
+        animation: RIn 1s forwards;
+    }
+    @keyframes lastRIn {
+        0%{
+            right: -1300px;
+        }
+        100%{
+            right: 0;
+        }
+    }
+    .lastRIn{
+        animation: lastRIn 1s forwards;
+    }
+    .xinxi-left{
+        width: 457.5px;
+        height: 332px;
+        background-color: #f6f6f6;
+        /* padding: 20px; */
+        /*float: left;*/
+    }
+    .left-nei{
+        width: 100%;
+        height: 313px;
+        /*background-color: white;*/
+        padding: 20px;
+    }
+    .nei-yige{
+        width: 100%;
+        height: 75px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    .jiale{
+        height: 102px;
+    }
+    .nei-yige a{
+        margin-bottom: 10px;
+        font-size: 16px;
+        float: left;
+        width: 100%;
+        height: 13px;
+        color: black;
+    }
+    .nei-yige li{
+        font-weight: 700;
+        font-size: 12px;
+        font-family: 'Montserrat', sans-serif;
+        float: left;
+        height: 35px;
+        width: 100%;
+        color: #000;
+        margin-left: -158px;
+        /*background-color: white;*/
+    }
+    .xinxi-right{
+        width: 652.5px;
+        height: 332.875px;
+        /*background-color: #f6f6f6;*/
+        padding: 0 15px;
+        float: left;
+        position: relative;
+        top:-333px;
+        left:500px;
+        overflow: hidden;
+    }
+    .nei-yige h3{
+        font-size: 18px;
+        float: left;
+        font-weight: 500;
+        background-color: #fafafa;
+        margin-left:20px;
+    }
+    .right-neiyi{
+        /* width: 632.5px; */
+        /* height: 41px; */
+        /*display: block;*/
+        min-width: 100%;
+        margin-bottom: 30px;
+        height: 55px;
+        padding: 7px 10px;
+        border: none;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 41px;
+        background-color: #fafafa;
+        color: #000;
+        margin-right: -1200px;
+    }
+    .dade{
+        height: 142px;
+    }
+    .right-tu{
+        width: 68px;
+        height: 156px;
+        /*background-color: white;*/
+        box-shadow: inset 0 0 0 5px #333;
+        padding: 0 6px;
+        position: absolute;
+        bottom: -21px;
+        right: -5px;
+    }
+    .right-zhezhao{
+        width: 100%;
+        height: 100%;
+        background: rgba(2, 2, 2, 1.0);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 1s ease;
+    }
+    .right-tu:hover .right-zhezhao{
+        background-color: rgba(2, 2, 2, 0);
+        color: black;
+    }
+    .right-zhezhao a{
+        font-size: 30px;
+        line-height: 144px;
+        margin-left: 19px;
+        background-color: rgba(0, 0, 0, 0);
+        color: #000;
+        transition: all 1s ease;
+    }
+    .right-tu:hover .right-zhezhao a{
+        color: black;
+    }
+    .fp-tableCell{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.61);
+    }
+</style>
+<body>
+    <div class="top" style="position: relative">
+        <div id="sec animatianbj" class="section dingwei">
+            <span class="span" style="font-size: 50px;margin-top: 300px;color:white;z-index: 666999;position: relative;top: -70px;left: 10px;">personal <br>homepage</span>
+            <div id="particles-js" style="position: absolute;top:0;left:0;"></div>
+            <!--<div class="zhez" style="position: absolute;top:0;left:0;background-color: rgba(0,0,0,0.4);width:100%;height:80%;text-align: center;">-->
+                <div class="jl"></div>
+
+                <div class="touxiang dingwei">
+                    <img style="border-radius: 50%" src="img/wo.jpg" alt="">
+                    <div class="shodo">
+                    </div>
+                    <div class="xuanz"></div>
+                </div>
+            <!--</div>-->
+            <div class="banyuan">
+                <img id="m" src="img/xiabiao.png" alt="" style="width: 30px;height:30px">
+            </div>
+        </div>
+        <div id="sec" class="section">
+            <div id="mydiv" style="height:700px;width:1366px;position: absolute;top: 0 ;left:0">
+            </div>
+            <div class="scen">
+                <ul>
+                    <li class="front">
+                        <img src="img/m3.jpg" alt="">
+                    </li>
+                    <li class="left">
+                        <img src="img/m2.jpg" alt="">
+                    </li>
+                    <li class="right">
+                        <img src="img/m1.jpg" alt="">
+                    </li>
+                    <li class="top1">
+                        <img src="img/m4.jpg" alt="">
+                    </li>
+                    <li class="bottom">
+                        <img src="img/m5.jpg" alt="">
+                    </li>
+                    <li class="behind">
+                        <img src="img/m6.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div class="rongqi">
+                <div id="box"><span class="span" style="font-size: 50px;color:white;width:1336px">About me</span></div>
+            <canvas width="300px" height="300px" class="canvas1 q"></canvas>
+            <canvas width="300px" height="300px" class="canvas2 w"></canvas>
+            <canvas width="300px" height="300px" class="canvas3 e"></canvas>
+        </div>
+        </div>
+        <div id="sec" class="section">
+            <div class="slide dingwei">
+                <img src="img/callfont.jpg" alt="">
+                <div class="all">
+                    <div class="p2-tit tc"><h1 style="font-size: 30px;color:#fff;">游戏介绍</h1></div>
+                    <h2 class="wuzizi1" style="position: absolute;top:-75px;left: 0;right: 0;bottom: 0;margin: auto;font-family: 方正书宋繁体;color: #000;">打字游戏</h2>
+                    <a href="projects/game/game.html" target="_blank">
+                    <h3 id="ks" style="position: absolute;top: 400px;left: 0;right: 0;bottom: 0;margin: auto;display: none">开始游戏</h3>
+                    </a>
+                </div>
+            </div>
+
+                <div class="slide" id="wuzi">
+                    <img src="img/timg.jpg" alt="">
+                    <a href="projects/game/wuzi.html" target="_blank">
+                        <h1 class="wuzizi" style="position: absolute;top:-75px;left: 0;right: 0;bottom: 0;margin: auto;font-family: 方正书宋繁体;color: #000;">五子棋大战</h1>
+                    </a>
+                </div>
+
+            <div class="slide">
+                <img src="img/7.jpg" alt="">
+            </div>
+        </div>
+        <div id="sec" class="section">
+            <div class="container pos" style="z-index:999">
+                <div class="p2-tit tc" style=color:#fff;>PERSONAL PROFILE</div>
+                <div class="p2-tit2 tc" style=color:#fff;> 个人作品简介</div>
+                <div class="p2-list">
+                    <ul>
+                        <a href="projects/xm/mi.html" target="_blank">
+                            <li>
+                                <div class="p2-li1 likai"><img src="img/m.jpg" width="172" height="180">
+                                    <p class="tc">2016.10.19</p>
+                                    <p class="tc">小米</p></div>
+                            </li>
+                        </a>
+                        <a href="projects/tm/TM.html" target="_blank">
+                        <li>
+                            <div class="p2-li2 likai"><img src="img/mao.jpg" width="172" height="180">
+                                <p class="tc">2017.2.12</p>
+                                <p class="tc">天猫</p></div>
+                        </li>
+                        </a>
+                        <a href="projects/china/zhongguoyidong.html" target="_blank">
+                        <li>
+                            <div class="p2-li3 likai"><img src="img/china.jpg" width="172" height="180">
+                                <p class="tc">2017.8.28</p>
+                                <p class="tc">中国移动</p></div>
+                        </li>
+                        </a>
+                        <a href="projects/iphone/my.html" target="_blank">
+                        <li>
+                            <div class="p2-li4 likai"><img src="img/ip.jpg" width="172" height="180">
+                                <p class="tc">2017.9.10</p>
+                                <p class="tc">苹果官网</p></div>
+                        </li>
+                        </a>
+                        <a href="projects/qy/QYZ.html" target="_blank">
+                        <li>
+                            <div class="p2-li5 likai"><img src="img/kt.jpg" width="172" height="180" style="margin: 20px 0 33px 0">
+                                <p class="tc">2017.11.11</p>
+                                <p class="tc">企业站</p></div>
+                        </li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="p2-text" style="color:#fff;">Hello everyone, my hometown in Qinghai Xining, but I was in Shanxi, an undergraduate
+                    student at Taiyuan Normal University, I majored in computer science and technology, in college, I
+                    learned much knowledge about the front, although the experience is not enough, but I will continue to
+                    progress in learning to enrich their experience, will make oneself more outstanding......
+                </div>
+                <div class="p2-jing"><img src="img/p2-pic6.png" width="368" height="314"></div>
+                <div class="p2-jingtext1">没有什么能够阻挡</div>
+                <div class="p2-jingtext2">我前进的步伐</div>
+
+            </div>
+        </div>
+        <div id="sec" class="section dingwei">
+            <img src="img/6.jpg" alt="">
+            <div class="last">
+                <footer class="container-fluid">
+                    <div class="container xinxi">
+                        <h1>GIT IN TOUCH</h1>
+                        <!--<h2>Out believe has request not how comfort evident. Up delight cousins we feeling</h2>-->
+                        <div class="xinxi-left">
+                            <div class="left-nei">
+                                <div class="nei-yige">
+                                    <a href="" class="iconfont">&#xe7dd;</a>
+                                    <li>PHONE</li>
+                                    <h3>+0351 17635778775</h3>
+                                </div>
+                                <div class="nei-yige">
+                                    <a href="" class="iconfont">&#xe615;</a>
+                                    <li>Email</li>
+                                    <h3>342222356@qq.com</h3>
+                                </div>
+                                <div class="nei-yige jiale">
+                                    <a href="" class="iconfont">&#xe6fc;</a>
+                                    <li>Location</li>
+                                    <h3>山西省太原市小店区</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xinxi-right">
+                            <div class="right-neiyi ttj">
+                                My Name*
+                            </div>
+                            <div class="right-neiyi tttj">
+                                My Technica*
+                            </div>
+                            <div class="right-neiyi dade ttttj">
+                                My Individuality*
+                                <div class="right-tu">
+                                    <div class="right-zhezhao">
+                                        <a href="" class="iconfont">&#xe676;</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script src="js/style.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/particles.min.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/app.js"></script>
+<script src="js/wofu.js"></script>
+<script>
+
+    particlesJS.load('particles-js', 'assets/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+
+    });
+    $(".top").fullpage({
+        verticalCentered:true,
+        sectionsColor:["red","white","yellow","white","glad"],
+        slidesColor:["red","blue","yellow","pink","glad"],
+        anchors:["p1","p2","p3","p4","p5"],
+        navigation:true,
+        slidesNavigation:true,
+        slidesNavPosition:top,
+        controlArrowColor:"#333",
+        loopHorizontal:true,
+        scrollingSpeed:500,
+        resize:true,
+        afterLoad:function (onchor,index) {
+            if(index===3){
+                $("#m").addClass("ac")
+                $(".wuzizi1").addClass("topIn")
+                $("#ks").show(500);
+                $("#wuzi").click(function () {
+                    $(".wuzizi").addClass("topIn")
+                })
+            }
+            if(index===2){
+                move(cv1,90,"blue","学习能力");
+                move(cv2,85,"red","人际交往");
+                move(cv3,85,"black","团队协作");
+            }
+            if(index===5){
+                setTimeout(function () {
+                    $(".ttj").addClass("RIn")
+                },500)
+                setTimeout(function () {
+                    $(".tttj").addClass("RIn")
+                },700)
+                setTimeout(function () {
+                    $(".ttttj").addClass("RIn")
+                },900)
+                $(".xinxi-left").addClass("lastLIn")
+            }
+        },
+        onLeave:function (index) {
+            setTimeout(function () {
+                if(index===2){
+
+                }
+            },500)
+            setTimeout(function () {
+                if(index===3){
+                    $(".wuzizi1").removeClass("topIn")
+                    $("#ks").hide(500);
+                }
+            },500)
+            if(index===5){
+                setTimeout(function () {
+                    $(".xinxi-left").removeClass("lastLIn")
+                    $(".ttj").removeClass("RIn")
+                    $(".tttj").removeClass("RIn")
+                    $(".ttttj").removeClass("RIn")
+                },500)
+
+            }
+        },
+    })
+    let cv1=document.querySelector(".canvas1");
+    let cv2=document.querySelector(".canvas2");
+    let cv3=document.querySelector(".canvas3");
+
+    function  move(canvas,max,color,font) {
+       var hb = canvas.getContext("2d");
+        hb.clearRect(0,0,300,300);
+        hb.strokeStyle=color;
+        hb.textAlign="center";
+        hb.textBaseline="middle";
+        hb.lineCap="round";
+        hb.font="40px 微软雅黑";
+        hb.lineWidth=20;
+        var num=0;
+        function pregrass() {
+            hb.save();
+            hb.translate(150,150);
+            num++;
+            hb.clearRect(-150,-150,300,300);
+            hb.beginPath();
+            let angle=num*(Math.PI/50);
+            hb.save();
+            hb.rotate(-Math.PI/2);
+            hb.arc(0,0,75,0,angle);
+            hb.restore();
+            hb.fillText(num+"%",0,0);
+            hb.fillText(font,0,-115);
+            if(num<max){
+                requestAnimationFrame(pregrass);
+            }
+            hb.restore();
+            hb.stroke();
+        }
+        pregrass();
+    }
+    let flag=true;
+
+    $(".p2-list li").mouseenter(function () {
+
+        $(this).find("img").addClass("flipInX animated");
+    });
+    $(".p2-list li ").mouseleave(function () {
+        $(this).find("img").removeClass("flipInX animated");
+    });
+    /*******/
+    $(".p5-list ul li div").mouseenter(function () {
+
+        $(this).find("img").addClass("pulse animated");
+    });
+    $(".p5-list ul li div").mouseleave(function () {
+        $(this).find("img").removeClass("pulse animated");
+    });
+    /******/
+    $(".p6-list ul li ").mouseenter(function () {
+
+        $(this).find("img").addClass("flipInX animated");
+    });
+    $(".p6-list ul li ").mouseleave(function () {
+        $(this).find("img").removeClass("flipInX animated");
+    });
+    /************/
+    $(".p4-list ul li ").mouseenter(function () {
+
+        $(this).find("img").addClass("flipInY animated");
+    });
+    $(".p4-list ul li ").mouseleave(function () {
+        $(this).find("img").removeClass("flipInY animated");
+    });
+    $(".banyuan").click(function () {
+        $.fn.fullpage.moveSectionDown();
+    })
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,	//小球x轴速度,正为右，负为左
+                vy: 4,	//小球y轴速度
+                height: 2,	//小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,		//点个数
+                color: "121, 162, 185", 	//点颜色
+                stroke: "130,255,255", 		//线条颜色
+                dist: 6000, 	//点吸附距离
+                e_dist: 20000, 	//鼠标吸附加速距离
+                max_conn: 10 	//点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+</script>
+</html>

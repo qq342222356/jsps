@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 449486 */
+    src: url('https://at.alicdn.com/t/font_449486_2m7o2drrkob0rudi.eot');
+    src: url('https://at.alicdn.com/t/font_449486_2m7o2drrkob0rudi.eot?#iefix') format('embedded-opentype'),
+    url('https://at.alicdn.com/t/font_449486_2m7o2drrkob0rudi.woff') format('woff'),
+    url('https://at.alicdn.com/t/font_449486_2m7o2drrkob0rudi.ttf') format('truetype'),
+    url('https://at.alicdn.com/t/font_449486_2m7o2drrkob0rudi.svg#iconfont') format('svg');
+}
+body{
+    background-image: url(../img/qipan.jpg);
+    background-size: 100%;
+    background-repeat:repeat-x;
+}
+.content{
+    width: 560px;
+    height: 560px;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    display: none;
+    opacity: 0.7;
+}
+canvas{
+    background-color: #eed544;
+}
+@keyframes show {
+    0%{
+        transform: scale(0.1,0.1);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+.show{
+    display: block;
+    animation: show 0.5s cubic-bezier(0.250, 0.250, 0.750, 0.750); ;
+}
+.gongneng{
+    /*border: 2px solid black;*/
+    border-radius: 10px;
+    width: 150px;
+    position: absolute;
+    top: 230px;
+    left:600px;
+}
+.gongneng1{
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 150px;
+    display: none;
+}
+#start{
+    border-radius: 20px;
+    background-color: #19b6ae;
+    width:150px;
+    height: 50px;
+}
+#end{
+    border-radius: 20px;
+    background-color: #19b6ae;
+    width:150px;
+    height: 50px;
+    color: red;
+    font-weight: 700;
+    font-size: 20px;
+}
+#start input{
+    width: 100px;
+    height: 60px;
+}
+span{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Adobe 繁黑體 Std B";
+    margin: 20px 0 0 20px;
+    display: inline-block;
+}
+.people,.computer{
+    border-radius: 20px;
+    background-color: #19b6ae;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.kaishi{
+    width: 560px;
+    height: 560px;
+    position: absolute;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#start .big{
+    width: 300px;
+    height: 200px;
+    display: none;
+}
+.over{
+    margin: 30px 0 20px 0;
+    border-radius: 20px;
+    color: red;
+    width: 150px;
+    height: 50px;
+}
+.zhezhao{
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.7);
+    position: fixed;
+    top:0;
+    left:0;
+    display: none;
+}
+#agin{
+   position: absolute;
+    top: 300px;
+    left: 600px;
+}
+#save{
+    position: absolute;
+    top: 330px;
+    left: 600px;
+}
+.zhezhao span{
+    position: absolute;
+    top: 250px;
+    left: 574px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.zhezhao1{
+    width: 1226.360px;
+    height: 635px;
+    text-align: center;
+    line-height: 600px;
+    font-size: 40px;
+    font-weight: 700;
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color:rgba(0,0,0,0.5);;
+}
+.zhezhao1 #start1{
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top:100px;
+    left:500px;
+}
+.imgbox{
+    width: 600px;
+    height: 600px;
+    background-size: 600px 600px;
+    background-position: 0 0;
+    position: absolute;
+    left:384px;
+    top:20px;
+    display: none;
+    opacity: 0.7;
+}
+.music{
+    border: 1px solid #000;
+    font-family: "iconfont";
+    font-size: 36px;
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    animation: music 1.5s linear infinite;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+@keyframes music {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+#download{
+    display: block;
+    position: absolute;
+    width: 87px;
+    text-decoration: none;
+    height: 20px;
+    line-height: 30px;
+    font-size: 20px;
+    color: #ff1512;
+    bottom: 40px;
+    right: 244px;
+    display: none;
+}

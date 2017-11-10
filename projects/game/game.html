@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    img{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+    html,body{
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    .content{
+        width: 100%;
+        height: 100%;
+        background: #333;
+        position: relative;
+        float: left;
+        background-image: url(img/callfont.jpg);
+        background-size: contain;
+    }
+    .inner{
+        width: 1091px;
+        height: 100%;
+        background: #19b6ae;
+        float: left;
+        background-color:rgba(0,0,0,0);
+    }
+    .letter{
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        position: absolute;
+        color: black;
+        font-size: 30px;
+        text-align: center;
+        line-height: 100px;
+    }
+    .gongneng{
+        float: right;
+        width: 150px;
+        height: 100%;
+        background: red;
+        background-color:rgba(0,0,0,0.4);
+    }
+    .num{
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+    }
+    .fen,.life,.guan{
+        position: relative;
+    }
+    #ding1{
+        position: absolute;
+        right:15px;
+        top:20px;
+        color: #fff;
+    }
+    #ding2{
+        position: absolute;
+        right:15px;
+        top:20px;
+        color: #fff;
+    }
+    #ding3{
+        position: absolute;
+        right:15px;
+        top:20px;
+        color: #fff;
+    }
+    .over{
+        border:3px solid #bababa;
+        border-radius: 20px;
+        background-color: black;
+    }
+    .gongneng div,img{
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <div class="content">
+        <div class="inner"></div>
+        <div class="gongneng">
+            <div style="color: white">分数</div>
+            <div class="fen">
+                <img src="img/scor.png" alt="" style="width:100%;height:100%;">
+                <span id="ding1">0</span>
+            </div>
+            <div style="color: white">关卡</div>
+            <div class="guan">
+                <img src="img/scor.png" alt="" style="width:100%;height:100%;">
+                <span id="ding2">1</span></div>
+            <div style="color: white">生命</div>
+            <div class="life">
+                <img src="img/scor.png" alt="" style="width:100%;height:100%;">
+                <span id="ding3">5</span></div>
+            <button class="start">
+                <img src="img/start.png" alt="" style="width:100%;height:100%">
+                开始</button>
+            <button class="stop">
+                <img src="img/hard.png" alt="" style="width:100%;height:100%">
+                暂停</button>
+            <button class="over" style="margin-left: 35px;color:#fff;font-weight:700;">
+                game over
+                <br>结束</button>
+        </div>
+
+    </div>
+</body>
+<script>
+    let inner=document.querySelector(".inner");
+    let fen=document.querySelector(".fen");
+    let guan=document.querySelector(".guan");
+    let life=document.querySelector(".life");
+    let fs=document.querySelector("#ding1");
+    let gs=document.querySelector("#ding2");
+    let ss=document.querySelector("#ding3");
+    let hh = window.innerHeight;
+    let gss=gs.innerHTML="1";
+    let fss=fs.innerHTML="0";
+    let sss=ss.innerHTML="10";
+    let arr={};
+    function letter() {
+        let newDiv=document.createElement("div");
+        newDiv.className="num";
+        newDiv.style.position="absolute";
+        inner.appendChild(newDiv);
+        do{
+            var sz=Math.floor(Math.random()*26+65);
+            var zm=String.fromCharCode(sz);
+        }while(arr[zm]);
+        newDiv.style.background="url("+zm+".png) no-repeat center";
+        do{
+            var terleft=Math.floor(Math.random()*1000);
+        }while(obj(terleft));
+        newDiv.style.left=terleft+"px";
+        var tertop=Math.floor(-Math.random()*100);
+        newDiv.style.top=tertop+"px";
+        arr[zm]={left:terleft,top:tertop,ele:newDiv};
+        console.log(arr[zm]);
+    }
+    function  obj(e) {
+        for(let i in arr){
+            if(arr[i].left-100<e&&arr[i].left+100>e){
+                return true;
+            }
+        }
+    }
+    let s=setInterval(move,50);
+    clearInterval(s);
+    function move() {
+        for(let i in arr){
+            let t=arr[i].top;
+            t+=5;
+            arr[i].ele.style.top=t+"px";
+            arr[i].top=t;
+            if (arr[i].top > hh) {
+                sss--;
+                ss.innerHTML = sss;
+                inner.removeChild(arr[i].ele);
+                delete arr[i];
+                letter();
+                if (sss === 0) {
+                    if (confirm("游戏结束，得分为" + fss + " 是否继续")) {
+                        history.go(0);
+                    }
+                }
+            }
+        }
+    }
+    document.onkeydown=function (e) {
+        let aj=e.keyCode;
+        let zim=String.fromCharCode(aj);
+        if(arr[zim]){
+            inner.removeChild(arr[zim].ele);
+            delete arr[zim];
+            fss++;
+            fs.innerHTML=fss;
+            if(fss%10===0){
+                gss++;
+                gs.innerHTML=gss;
+                if(2<gss<5){
+                letter();
+                }
+            }
+            letter();
+        }
+    };
+    let start=document.querySelector(".start");
+    let stop=document.querySelector(".stop");
+    let over=document.querySelector(".over");
+    stop.onclick=function () {
+        clearInterval(s);
+        o=true;
+    };
+    let oo=false;
+    let o=true;
+    start.onclick=function () {
+        if(o){
+           s=setInterval(move,50);
+            move();
+            o=false;
+        }
+        if(oo){
+            for(let i=0;i<3;i++){
+                letter();
+                oo=true;
+            }
+        }
+    };
+    over.onclick=function () {
+        if(confirm("确定结束么？")){
+            inner.innerHTML="";
+            fss="0";
+            gss="1";
+            sss="5";
+            clearInterval(s);
+            o=true;
+            oo=true;
+        }
+    }
+</script>
+<script>
+//    class Game{
+//        constructor(){
+//        this.inner=document.querySelector(".inner");
+//        this.fen=document.querySelector(".fen");
+//        this.guan=document.querySelector(".guan");
+//        this.life=document.querySelector(".life");
+//        this.start=document.querySelector(".start");
+//        this.stop=document.querySelector(".stop");
+//        this.over=document.querySelector(".over");
+//        this.obj={};
+//        this._clean();
+//        this.h=window.innerHeight;
+//    }
+//        _clean(){
+//            this.num=0;
+//            this.fen.innerHTML=this.num;
+//            this.speed=2;  //速度
+//            this.lf=5;
+//            this.life.innerHTML=this.lf;
+//            this.gk=1;
+//            this.guan.innerHTML=this.gk;
+//        }
+//        _create(){
+//            this.newDiv=document.createElement("div");
+//            console.log(newDiv);
+//            this.newDiv.className="letter";
+//            this.inner.appendChild(this.newDiv);
+//            let t=Math.floor(Math.random()*100);
+//            this.newDiv.style.top=t;
+//            do{
+//                var suiji=Math.floor(Math.random()*23+65);
+//                var zm=String.fromCharCode(suiji);
+//            }while(this.obj[zm]);
+//            do{
+//                var l=Math.floor(Math.random()*1100);
+//            }while(this._pandc(l));
+//            this.obj[zm]={left:l,top:top,ele:newDiv};
+//            newdiv.innerHTML=zm;
+//            this._move();
+//
+//        }
+//        _pandc(l){
+//            for(i in this.obj){
+//                if(this.obj[i].left-100<l&&this.obj[i].left+100>l){
+//                    return true;
+//                }
+//            }
+//        }
+//        _move(){
+//            for(let i in this.obj){
+//                this.time=setInterval(function () {
+//                    this.t+=this.speed;
+//                    this[i].ele.style.top=this.t;
+//                    if(this.t>this.h){
+//                        this.inner.removeChild(obj[i].ele);
+//                        this.lf--;
+//                        this.life.innerHTML=this.lf;
+//                        delete obj[i].ele;
+//                        this._create();
+//                    }
+//
+//            }.bind(this),50)
+//        }
+//        this.time();
+//    }
+//    _start(){
+//        this.start.onclick=function () {
+//            this._move();
+//
+//        }
+//    }
+//    }
+//    let game=new Game();
+//    over.onclick=function () {
+//
+//    }
+</script>
+</html>
